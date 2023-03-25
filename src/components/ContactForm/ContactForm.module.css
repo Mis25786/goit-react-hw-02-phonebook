@@ -1,0 +1,13 @@
+.form {
+  display: table-caption;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.label {
+}
+
+.input {
+  margin-bottom: 20px;
+  outline: none;
+}
