@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { nanoid } from 'nanoid';
 import css from './ContactForm.module.css';
 
 import Button from 'components/Button/Button';
@@ -12,22 +11,27 @@ class ContactForm extends Component {
     number: '',
   };
 
-  handleInputChange = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
-  };
-  // handleInputChange = e => {
-  //   const { name, value } = e.target;
-
+  // handleInputChange = ({ target: { name, value } }) => {   // глибока диструктуризація
   //   this.setState({ [name]: value });
   // };
+  handleInputChange = e => {
+    const { name, value } = e.target;
 
-  //   handleSubmit = event => {
-  // event.preventDefault();
-  // const { name, number } = this.state;
-  // this.props.onSubmit({ id: nanoid(), name, number });
-  // this.reset();
-  //   };
-  handleSubmit = () => {};
+    this.setState({ [name]: value });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    this.props.createUser({
+      name: this.state.name,
+      number: this.state.number,
+    });
+    this.setState({
+      name: '',
+      number: '',
+    });
+  };
 
   render() {
     const { name, number } = this.state;

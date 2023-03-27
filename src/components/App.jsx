@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { nanoid } from 'nanoid';
 
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
@@ -10,6 +11,16 @@ export class App extends Component {
   state = {
     contacts: [],
     filter: '',
+    // name: '',
+    // number: '',
+  };
+
+  createUser = data => {
+    const newUser = {
+      ...data,
+      id: nanoid(),
+    };
+    console.log('newUser :>> ', newUser);
   };
 
   render() {
@@ -17,7 +28,7 @@ export class App extends Component {
       <>
         <div className={css.phonebook}>
           <h1>Phonebook</h1>
-          <ContactForm />
+          <ContactForm createUser={this.createUser} />
 
           <h2>Contacts</h2>
           <Filter />
