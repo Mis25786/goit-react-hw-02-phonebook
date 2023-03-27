@@ -21,6 +21,7 @@ export class App extends Component {
       id: nanoid(),
     };
     console.log('newUser :>> ', newUser);
+    this.setState({ contacts: newUser });
   };
 
   render() {
