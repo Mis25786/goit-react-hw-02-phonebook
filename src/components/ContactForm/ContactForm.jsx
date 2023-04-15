@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
-
-import Button from 'components/Button/Button';
 
 class ContactForm extends Component {
   state = {
     contacts: [],
-    filter: '',
     name: '',
     number: '',
   };
@@ -16,12 +14,14 @@ class ContactForm extends Component {
   // };
   handleInputChange = e => {
     const { name, value } = e.target;
-
     this.setState({ [name]: value });
   };
 
   handleSubmit = e => {
     e.preventDefault();
+
+    // можна використати коли відправляємо всі дянні які знаходяться в state
+    // this.props.createUser(this.state);
 
     this.props.createUser({
       name: this.state.name,
@@ -42,8 +42,8 @@ class ContactForm extends Component {
         autoComplete="off"
         onSubmit={this.handleSubmit}
       >
-        <label className="label">
-          <span className="label-text">Name</span>
+        <label className={css['label-name']}>
+          <span className={css['label-text']}>Name</span>
 
           <input
             className={css.input}
@@ -56,9 +56,8 @@ class ContactForm extends Component {
             required
           />
         </label>
-
-        <label className="label">
-          <span className="label-text">Number</span>
+        <label className={css['label-number']}>
+          <span className={css['label-text']}>Number</span>
 
           <input
             className={css.input}
@@ -71,12 +70,14 @@ class ContactForm extends Component {
             required
           />
         </label>
-
-        {/* <Button type="submit">Add contact</Button> */}
-        <Button />
+        <button className={css['btn-add']}>Add contact</button>
       </form>
     );
   }
 }
+
+// ContactForm.propTypes = {
+//   createUser: PropTypes.func.isRequired,
+// };
 
 export default ContactForm;

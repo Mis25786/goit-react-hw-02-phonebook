@@ -1,5 +1,6 @@
 .phonebook {
   display: inline-block;
-  padding: 30px;
-  border: 2px dashed grey;
+  padding: 20px;
+  margin-top: 50px;
+  box-shadow: 5px 5px 15px 5px dodgerblue;
 }
